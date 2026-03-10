@@ -1,0 +1,790 @@
+/*Porque una vez que mi pagina web pasa a modo oscuro, al volver al modo claro muchos elementos (bloques, letras, etc) se mantienen con los colores del modo oscuro (Ej. letras de color blanco). Css:*/
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+
+}
+
+:root {
+    --bg-color: #ffffff;
+    --text-color: #1D1D1B;
+    --card-color: #f5f5f5;
+}
+
+.dark-mode {
+    --bg-color: #1a1a1a;
+    --text-color: #ffffff;
+    --card-color: #1e1e1e;
+    th, td {
+        color: #FFFFFF;
+    }
+
+    .borrar {
+        color: #FFFFFF;
+    }
+
+    .box {
+        background-color: black;
+    }
+
+    h2 {
+        font-size: 45px;
+        line-height: 55px;
+        color: #ebebeb;
+        margin-bottom: 15px;
+    }
+
+    p {
+        font-size: 16px;
+        color: #aeaeae;
+        margin-bottom: 45px;
+    }
+
+    .header-txt h1 {
+        color: #ebebeb;
+    }
+
+    .header-txt p {
+        color: #aeaeae;
+        
+    }
+
+    .claro {
+        display: none;
+    }
+
+    .oscuro {
+        display: inline;
+    }
+    
+
+    .menu-icono span{
+        background-color: #FFFFFF;
+    }
+
+    .product-txt h3 {
+        color: #ebebeb;
+    }
+}
+
+
+body {
+
+    font-family: "Poppins", sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.4s, color 0.4s;
+
+}
+
+.container {
+
+    max-width: 1200px;
+    margin: 0 auto;
+
+}
+
+.header {
+
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    min-height: 70vh;
+    position: relative;
+}
+
+.menu {
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 100;
+
+}
+
+.logo {
+
+    font-size: 25px;
+    color: rgb(0, 94, 255);
+    text-transform: uppercase;
+    font-weight: 800;
+}
+
+.menu .navbar ul li {
+
+    position: relative;
+    float: left;
+
+}
+
+.navbar img {
+    width: 30px;
+}
+
+
+.menu .navbar ul li {
+
+    font-size: 18px;
+    padding: 20px;
+    font-weight: 600;
+    color: #1D1D1B;
+    display: block;
+
+}
+
+
+.menu .navbar ul li a:hover {
+    color: rgb(15, 119, 216);
+}
+
+#menu {
+    display: none;
+}
+
+.menu-icono{
+    width: 30px;
+    height: 25px;
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+}
+
+.menu-icono span{
+    display: block;
+    height: 3px;
+    width: 100%;
+    background-color: #1D1D1B;
+    border-radius: 3px;
+    transition: 0.3s;
+}
+
+.submenu {
+    position: relative;
+}
+
+#usuario{
+    display:none;
+    position:absolute;
+    right:0;
+    top:100%;
+    backdrop-filter: blur(5px);
+    background-color:#8f8f8f97;
+    padding:20px;
+    min-width:200px;
+    box-shadow: 0 0 20px rgb(0, 0, 0);
+    flex-direction: column;
+    gap: 10px;
+    border-radius: 15px;
+}
+
+.submenu #carrito {
+    display: none;
+}
+
+#menu-usuario {
+    display:none;
+}
+
+.submenu:hover #carrito {
+    display: block;
+    position: absolute;
+    right: 0;
+    backdrop-filter: blur(5px);
+    top: 100%;
+    z-index: 1;
+    background-color: #8f8f8f97;
+    padding: 20px;
+    min-width: 400px;
+    box-shadow: 0 0 20px rgb(0, 0, 0);
+    border-radius: 15px;
+}
+
+#menu-usuario:checked ~ #usuario {
+    display: flex;
+}
+
+#img-carrito{
+    width: 40px;
+    height: auto;
+}
+
+#img-usuario{
+    width: 40px;
+    height: auto;
+}
+
+table {
+    width: 100%;
+}
+
+th, td {
+    color: black
+}
+
+.borrar {
+    background-color: rgb(0, 94, 255);
+    border-radius: 50%;
+    padding: 5px 10px;
+    text-decoration: none;
+    color: black;
+    font-weight: 800;
+}
+
+.bg {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 700px;
+    z-index: 0;
+    display: none;
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+}
+
+.header-txt {
+    width: 50%;
+    margin-right: 50px;
+    
+}
+
+.header-txt h1 {
+    font-size: 55px;
+    line-height: 65px;
+    color: #1D1D1B;
+    margin-bottom: 35px;
+    
+}
+
+.header-txt p {
+    font-size: 16px;
+    color: #5E5E5E;
+    
+}
+
+.header-txt span {
+    color: rgb(15, 119, 216);
+}
+
+.btn-1 {
+    display: inline-block;
+    padding: 13px 45px;
+    border-radius: 25px;
+    background-color: rgb(0, 94, 216);
+    font-size: 16px;
+    color: #FFFFFF;
+    text-transform: capitalize;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+.btn-1:hover {
+    background-color: rgb(15, 119, 216);
+}
+
+.header-img{
+    position: relative;
+    right: -100px;
+    bottom: -40px;
+    z-index: 1;
+    width: 500px;
+}
+
+.header-img img{
+    width: 550px;
+}
+
+.claro {
+    display: inline;
+}
+
+.oscuro {
+    display: none;
+}
+
+.quimico {
+    padding: 50px 0;
+    position: relative;
+    z-index: 2;
+}
+
+h1 {
+    margin-top: 100px;
+}
+
+h2 {
+    font-size: 45px;
+    line-height: 55px;
+    color: #1D1D1B;
+    margin-bottom: 15px;
+}
+
+p {
+    font-size: 16px;
+    color: #5E5E5E;
+    margin-bottom: 45px;
+}
+
+.quimico-content {
+    display: flex;
+    justify-content: space-between;
+}
+
+.quimico-1 {
+    display: flex;
+    align-items: center;
+    background-color: rgb(0, 94, 216);
+    padding: 10px;
+    border-radius: 15px;
+    width: 200px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+.quimico-1 h3 {
+    font-size: 16px;
+    color: #FFFFFF;
+    font-weight: 600;
+}
+
+.quimico-1 img {
+    width: 50px;
+    margin-right: 25px;
+}
+
+.info {
+    padding: 100px 0;
+    position: relative;
+    z-index: 2;
+}
+
+.bg-2 {
+    position: absolute;
+    width: 300px;
+    z-index: -1;
+    top: 50px;
+}
+
+.info-content {
+    display: flex;
+    align-items: center;
+}
+
+.info-img {
+    width: 50%;
+    text-align: left;
+}
+
+.info-img img {
+    width: 450px;
+    margin-left: -55px;
+    margin-top: 90px;
+}
+
+.info-txt {
+    width: 50%;
+}
+
+.products {
+    padding: 0 0 50px 0;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+.box-container {
+    margin-top: 55px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.box {
+    border-top: 2px solid rgb(0, 94, 216);
+    padding: 20px;
+    border-radius: 15px;
+    z-index: 1000;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    display: none;
+    background-color: white;
+}
+
+.box:nth-child(1),
+.box:nth-child(2),
+.box:nth-child(3),
+.box:nth-child(4) {
+    display: inline-block;
+}
+
+.box img {
+    width: 120px;
+}
+
+.product-txt h3 {
+    font-size: 20px;
+    color: #1D1D1B;
+    margin-bottom: 10px;
+}
+
+.product-txt p {
+    margin-bottom: 25px;
+}
+
+.precio {
+    font-size: 15px;
+    color: rgb(0, 94, 216);
+}
+
+.btn-2 {
+    background-color: rgb(0, 94, 216);
+    margin-top: 50px;
+    display: inline-block;
+    padding: 13px 35px;
+    border-radius: 25px;
+    color: #FFFFFF;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.btn-2:hover {
+    background-color: rgb(15, 119, 216);
+}
+
+.btn-3 {
+    display: inline-block;
+    padding: 5px 25px;
+    background-color: rgb(0, 94, 216);
+    color: #FFFFFF;
+    border-radius: 10px;
+}
+
+.btn-3:hover {
+    background-color: rgb(15, 119, 216);
+}
+
+.app {
+    padding: 20px 0;
+    display: flex;
+    align-items: center;
+}
+
+.app-txt {
+    width: 50%;
+}
+
+.descarga {
+    display: flex;
+}
+
+.descarga img {
+    width: 150px;
+}
+
+.app-img {
+    width: 50%;
+    text-align: center;
+}
+
+.app-img img {
+    width: 450px;
+}
+
+.footer {
+    padding: 50px 0;
+    background-color: rgb(0, 94, 216);
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+}
+
+.link h3 {
+    font-size: 18px;
+    margin-bottom: 15px;
+    color: #FFFFFF;
+}
+
+.link a {
+    color: #FFFFFF;
+    font-size: 16px;
+    display: block;
+    margin-bottom: 10px;
+}
+
+
+
+@media (max-width:991px) {
+
+    .menu {
+        padding: 20px;
+    }
+
+    .menu-icono {
+        width: 30px;
+        height: 25px;
+        display: initial;
+        flex-direction: column;
+        justify-content: space-between;
+        cursor: pointer;
+    }
+
+    .menu-icono span {
+        display: block;
+        height: 5px;
+        width: 100%;
+        background-color: #1D1D1B;
+        border-radius: 3px;
+        transition: 0.3s;
+    }
+
+    .menu label {
+        display: flex;
+    }
+
+    .menu .navbar {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: rgb(0, 94, 216);
+        display: none;
+    }
+
+    .menu .navbar ul li {
+        width: 100%;
+    }
+
+    .menu .navbar ul li a:hover {
+        color: #FFFFFF;
+
+    }
+
+    .logo {
+        display: none;
+    }
+
+    #menu:checked ~ .navbar {
+        display: initial;
+    }
+
+    #menu:checked + .menu-icono span:nth-child(1) {
+        transform: rotate(45deg) translate(8.5px,5px);
+    }
+
+    #menu:checked + .menu-icono span:nth-child(2) {
+        opacity: 0;
+    }
+
+    #menu:checked + .menu-icono span:nth-child(3) {
+        transform: rotate(-45deg) translate(8.5px,-6px);
+    }
+
+    .submenu:hover #carrito {
+        width: 100%;
+        display: block;
+        position: absolute;
+        right: -175px;
+        backdrop-filter: blur(10px);
+        top: 100%;
+        z-index: 1;
+        background-color: #8f8f8f97;
+        padding: 20px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    }
+
+    #usuario{
+        right:10px;
+        top: 45px;
+    }
+
+    .bg {
+        display: none;
+    }
+
+    .header-content {
+        flex-direction: column;
+        padding: 100px 30px 30px 30px;
+    }
+
+    .header-txt {
+        width: 100%;
+        margin: 0 0 25px 0;
+        text-align: center;
+    }
+
+    .header-txt h1 {
+        font-size: 45px;
+        line-height: 55px;
+        margin-bottom: 20px;
+    }
+
+    .header-txt p {
+        margin-bottom: 20px;
+    }
+
+    .header-img {
+        width: 100%;
+        text-align: center;
+    }
+
+    .header-img img {
+        width: 300px;
+    }
+
+    .quimico {
+        padding: 30px;
+    }
+
+    .quimico-content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .quimico-1 {
+        justify-content: space-between;
+        padding: 10px 55px;
+        width: 100%;
+        margin-bottom: 25px;
+    }
+
+    .info {
+        padding: 30px;
+    }
+
+    .bg-2 {
+        display: none;
+    }
+
+    .info-content {
+        flex-direction: column;
+    }
+
+    .info-img {
+        width: 100%;
+        text-align: center;
+    }
+
+    .info-img img {
+        width: 250px;
+        margin-left: 0;
+    }
+
+    .info-txt {
+        width: 100%;
+        text-align: center;
+    }
+    
+    .products {
+        padding: 30px;
+    }
+
+    .box-container {
+        margin-top: 25px;
+    }
+
+    .app {
+        flex-direction: column;
+        padding: 30px;
+    }
+
+    .app-txt {
+        width: 100%;
+        text-align: center;
+    }
+
+    .descarga {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .app-img {
+        width: 100%;
+        text-align: center;
+    }
+
+    .app-img img {
+        width: 300px;
+    }
+
+    .descarga img {
+        display: initial;
+        width: 150px;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer {
+        padding: 30px;
+    }
+    
+    .footer-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+}
+
+@media (prefers-color-scheme: dark) {
+    body.dark-mode {
+        --bg-color: #1a1a1a;
+        --text-color: #ffffff;
+    }
+
+    th, td {
+        --text-color: #ffffff;
+    }
+
+    .borrar {
+        --text-color: #ffffff;
+    }
+
+    .box {
+        --bg-color: black;
+    }
+
+    h2 {
+        --text-color: #ebebeb;
+    }
+
+    p {
+        --text-color: #aeaeae;
+    }
+
+    .header-txt h1 {
+        --text-color: #ebebeb;
+    }
+
+    .header-txt p {
+        --text-color: #aeaeae;
+        
+    }
+
+    .menu-icono span{
+        --bg-color: #FFFFFF;
+    }
+    
+    .product-txt h3 {
+        --text-color: #ebebeb;
+    }
+
+}
+
+/*
+
+*/
