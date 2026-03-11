@@ -1,23 +1,4 @@
-//Dark mode
-/*const toggle = document.getElementById("dark-mode-toggle");
- 
-if(localStorage.getItem("modoOscuro") === "activo"){
-    document.body.classList.add("dark-mode");
-    toggle.src = "imagenes/sol.png";
-}
-
-toggle.addEventListener("click", function(){
-
-    document.body.classList.toggle("dark-mode");
-
-    if(document.body.classList.contains("dark-mode")){
-        localStorage.setItem("modoOscuro","activo");
-        toggle.src = "imagenes/sol.png";
-    } else {
-        localStorage.setItem("modoOscuro","inactivo");
-        toggle.src = "imagenes/luna.png";
-    }
-});*/
+//--------------------------Dark mode
 
 const toggle = document.getElementById("dark-mode-toggle");
 
@@ -27,16 +8,16 @@ let modoGuardado = localStorage.getItem("modoOscuro");
 // si el usuario ya eligió
 if (modoGuardado === "activo") {
     document.body.classList.add("dark-mode");
-    toggle.src = "imagenes/sol.png";
+    toggle.src = "imagenesIndex/sol.png";
 } 
 else if (modoGuardado === "inactivo") {
     document.body.classList.remove("dark-mode");
-    toggle.src = "imagenes/luna.png";
+    toggle.src = "imagenesIndex/luna.png";
 } 
 // si nunca eligió nada → usar preferencia del sistema
 else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
     document.body.classList.add("dark-mode");
-    toggle.src = "imagenes/sol.png";
+    toggle.src = "imagenesIndex/sol.png";
 }
 
 // botón
@@ -46,15 +27,15 @@ toggle.addEventListener("click", function(){
 
     if(document.body.classList.contains("dark-mode")){
         localStorage.setItem("modoOscuro","activo");
-        toggle.src = "imagenes/sol.png";
+        toggle.src = "imagenesIndex/sol.png";
     } else {
         localStorage.setItem("modoOscuro","inactivo");
-        toggle.src = "imagenes/luna.png";
+        toggle.src = "imagenesIndex/luna.png";
     }
 
 });
 
-//Cargar más:
+//--------------------------Cargar más:
 let loadMoreBtn = document.querySelector('#load-more');
 let currentItem = 4;
 
@@ -71,7 +52,7 @@ loadMoreBtn.onclick = () => {
     }
 }
 
-//carrito
+//--------------------------carrito
 
 const carrito = document.getElementById('carrito');
 const elementos = document.getElementById('lista-1');
@@ -149,3 +130,34 @@ function vaciarCarrito() {
     return false;
 }
 
+//--------------------------Scroll Reveal
+
+window.addEventListener("scroll", reveal);
+
+function reveal(){
+    let reveals = document.querySelectorAll(".reveal");
+
+    for(let i = 0; i < reveals.length; i++){
+
+        let windowHeight = window.innerHeight;
+        let elementTop = reveals[i].getBoundingClientRect().top;
+        let visible = 100;
+
+        if(elementTop < windowHeight - visible){
+            reveals[i].classList.add("active");
+        }
+    }
+}
+
+
+//--------------------------Navbar scroll
+
+window.addEventListener("scroll", function() {
+    const menu = document.querySelector(".menu");
+
+    if(window.scrollY > 50){
+        menu.classList.add("menu-scroll");
+    } else {
+        menu.classList.remove("menu-scroll");
+    }
+});

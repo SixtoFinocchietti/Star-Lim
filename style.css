@@ -1,5 +1,8 @@
-/*Porque una vez que mi pagina web pasa a modo oscuro, al volver al modo claro muchos elementos (bloques, letras, etc) se mantienen con los colores del modo oscuro (Ej. letras de color blanco). Css:*/
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+html{
+    scroll-behavior: smooth;
+}
 
 * {
 
@@ -10,6 +13,34 @@
     list-style: none;
 
 }
+
+@view-transition {
+  navigation: auto;
+}
+
+@keyframes slide-to-left {
+    from { transform: translateX(0); }
+    to { transform: translateX(-100%); }
+}
+
+@keyframes slide-from-right {
+    from { transform: translateX(100%); }
+    to { transform: translateX(0); }
+}
+
+
+::view-transition-old(root) {
+    animation: 0.8s ease-in-out both slide-to-left;
+}
+
+::view-transition-new(root) {
+    animation: 0.8s ease-in-out both slide-from-right;
+}
+
+::view-transition-group(root) {
+  animation-duration: 0.8s;
+}
+
 
 :root {
     --bg-color: #ffffff;
@@ -146,6 +177,8 @@ body {
 .menu .navbar ul li a:hover {
     color: rgb(15, 119, 216);
 }
+
+
 
 #menu {
     display: none;
@@ -296,7 +329,7 @@ th, td {
     background-color: rgb(15, 119, 216);
 }
 
-.header-img{
+.header-img {
     position: relative;
     right: -100px;
     bottom: -40px;
@@ -304,7 +337,7 @@ th, td {
     width: 500px;
 }
 
-.header-img img{
+.header-img img {
     width: 550px;
 }
 
@@ -784,6 +817,25 @@ p {
     }
 
 }
+
+.reveal{
+    opacity: 0;
+    transform: translateY(40px);
+    transition: 0.6s;
+}
+
+.reveal.active{
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.menu-scroll{
+    background-color: var(--bg-color);
+    box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+}
+
+
+
 
 /*
 
