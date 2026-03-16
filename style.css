@@ -1,8 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-html{
-    scroll-behavior: smooth;
-}
 
 * {
 
@@ -14,44 +11,11 @@ html{
 
 }
 
-@view-transition {
-  navigation: auto;
-}
-
-@keyframes slide-to-left {
-    from { transform: translateX(0); }
-    to { transform: translateX(-100%); }
-}
-
-@keyframes slide-from-right {
-    from { transform: translateX(100%); }
-    to { transform: translateX(0); }
-}
-
-
-::view-transition-old(root) {
-    animation: 0.8s ease-in-out both slide-to-left;
-}
-
-::view-transition-new(root) {
-    animation: 0.8s ease-in-out both slide-from-right;
-}
-
-::view-transition-group(root) {
-  animation-duration: 0.8s;
-}
-
-
-:root {
-    --bg-color: #ffffff;
-    --text-color: #1D1D1B;
-    --card-color: #f5f5f5;
-}
 
 .dark-mode {
-    --bg-color: #1a1a1a;
+    --bg-color: rgb(26, 26, 26);
     --text-color: #ffffff;
-    --card-color: #1e1e1e;
+    --card-color: #363636;
     th, td {
         color: #FFFFFF;
     }
@@ -105,15 +69,6 @@ html{
 }
 
 
-body {
-
-    font-family: "Poppins", sans-serif;
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    transition: background-color 0.4s, color 0.4s;
-
-}
-
 .container {
 
     max-width: 1200px;
@@ -131,11 +86,6 @@ body {
 }
 
 .menu {
-
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -144,19 +94,34 @@ body {
 }
 
 .logo {
-
+    top: 5px;
+    left: 10px;
     font-size: 25px;
     color: rgb(0, 94, 255);
     text-transform: uppercase;
     font-weight: 800;
+    position: fixed;
+}
+
+.menu .navbar ul {
+    top: -10px;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    gap: 1px;
+    margin-left: 150px;
+}
+
+.menu .navbar ul li a {
+    font-size: 20px;
+    color: #FFFFFF;
+    font-weight: 600;
 }
 
 .menu .navbar ul li {
-
-    position: relative;
-    float: left;
-
+    list-style: none;
 }
+
 
 .navbar img {
     width: 30px;
@@ -169,13 +134,16 @@ body {
     padding: 20px;
     font-weight: 600;
     color: #1D1D1B;
-    display: block;
+    display: inline;
 
 }
 
 
 .menu .navbar ul li a:hover {
-    color: rgb(15, 119, 216);
+    color:rgb(0,94,216);
+    padding-top:8px;
+    cursor: pointer;
+
 }
 
 
@@ -203,14 +171,15 @@ body {
 }
 
 .submenu {
-    position: relative;
+    position: absolute;
 }
 
-#usuario{
-    display:none;
-    position:absolute;
-    right:0;
-    top:100%;
+#usuario {
+    display: none;
+    position: fixed;
+    right:20px;
+    top:55px;
+    left: 800px;
     backdrop-filter: blur(5px);
     background-color:#8f8f8f97;
     padding:20px;
@@ -219,22 +188,23 @@ body {
     flex-direction: column;
     gap: 10px;
     border-radius: 15px;
+    z-index: 1;
 }
 
 .submenu #carrito {
     display: none;
 }
 
-#menu-usuario {
+.submenu #menu-usuario {
     display:none;
 }
 
 .submenu:hover #carrito {
     display: block;
-    position: absolute;
-    right: 0;
+    position: fixed;
+    right: 199px;
     backdrop-filter: blur(5px);
-    top: 100%;
+    top: 50px;
     z-index: 1;
     background-color: #8f8f8f97;
     padding: 20px;
@@ -247,14 +217,22 @@ body {
     display: flex;
 }
 
+
+
 #img-carrito{
+    right: 200px;
+    top: 10px;
     width: 40px;
     height: auto;
+    position: fixed;
 }
 
 #img-usuario{
+    top: 10px;
+    right: 25px;
     width: 40px;
     height: auto;
+    position: fixed
 }
 
 table {
@@ -274,13 +252,24 @@ th, td {
     font-weight: 800;
 }
 
-.bg {
-    position: absolute;
+.bg-4 {
+    position: fixed;
     top: 0;
     right: 0;
-    width: 700px;
-    z-index: 0;
-    display: none;
+    width: 100%;
+    height: 8%;
+    z-index: 3;
+    display: block;
+}
+
+.bg-3 {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 8%;
+    z-index: 3;
+    display: block;
 }
 
 .header-content {
@@ -331,7 +320,7 @@ th, td {
 
 .header-img {
     position: relative;
-    right: -100px;
+    right: 10px;
     bottom: -40px;
     z-index: 1;
     width: 500px;
@@ -563,17 +552,22 @@ p {
 
 @media (max-width:991px) {
 
-    .menu {
+    /*.menu {
         padding: 20px;
-    }
+    }*/
+
 
     .menu-icono {
+        position: fixed;
+        margin-top: 20px;
+        margin-left: 15px;
         width: 30px;
         height: 25px;
         display: initial;
         flex-direction: column;
         justify-content: space-between;
         cursor: pointer;
+        z-index: 1000;
     }
 
     .menu-icono span {
@@ -590,20 +584,41 @@ p {
     }
 
     .menu .navbar {
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        background-color: rgb(0, 94, 216);
-        display: none;
+
+        position: fixed;
+        top:0;
+        left: -100%;
+        width: 70%;
+        height:100vh;
+        background: var(--card-color);
+        padding:40px 20px;
+        transition: left 0.4s ease;
+        opacity:0;
+    }
+
+    .menu .navbar ul{
+        display: flex;
+        flex-direction: column;
     }
 
     .menu .navbar ul li {
+        margin:15px 0;
+        width: 100%;
+    }
+
+    .menu .navbar ul li a {
+        font-size:30px;
+        color: var(--text-color);
+        transition:0.3s;
+        display: block;
+        padding: 10px 0;
         width: 100%;
     }
 
     .menu .navbar ul li a:hover {
-        color: #FFFFFF;
+        color:rgb(0,94,216);
+        padding-left:8px;
+        cursor: pointer;
 
     }
 
@@ -612,8 +627,10 @@ p {
     }
 
     #menu:checked ~ .navbar {
-        display: initial;
+        left: 0;
+        opacity:1;
     }
+
 
     #menu:checked + .menu-icono span:nth-child(1) {
         transform: rotate(45deg) translate(8.5px,5px);
@@ -627,13 +644,21 @@ p {
         transform: rotate(-45deg) translate(8.5px,-6px);
     }
 
+    .submenu #img-carrito {
+            margin-left: 280px;
+            margin-top: 5px;
+            display: flex;
+            position: fixed;
+
+        }
+
     .submenu:hover #carrito {
         width: 100%;
         display: block;
-        position: absolute;
-        right: -175px;
+        position: fixed;
+        right: 0;
         backdrop-filter: blur(10px);
-        top: 100%;
+        top: 55px;
         z-index: 1;
         background-color: #8f8f8f97;
         padding: 20px;
@@ -645,8 +670,8 @@ p {
         top: 45px;
     }
 
-    .bg {
-        display: none;
+    .bg-4 {
+        height: 12%;
     }
 
     .header-content {
