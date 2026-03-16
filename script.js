@@ -161,3 +161,16 @@ window.addEventListener("scroll", function() {
         menu.classList.remove("menu-scroll");
     }
 });
+
+
+/*window.addEventListener('scroll', function() {
+    var imagen = document.querySelector('#bg-3');
+    const scrollActual = window.innerHeight + window.scrollY;
+    const alturaTotal = document.documentElement.scrollHeight;
+
+    if (scrollActual >= alturaTotal - 280) {
+        imagen.classList.add('.en-el-final');
+    } else {
+        imagen.classList.remove('.en-el-final');
+    }
+});*/
