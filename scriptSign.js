@@ -21,7 +21,7 @@ else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
 }
 
 // botón
-/*toggle.addEventListener("click", function(){
+toggle.addEventListener("click", function(){
 
     document.body.classList.toggle("dark-mode");
 
@@ -33,7 +33,7 @@ else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
         toggle.src = "imagenesIndex/luna.png";
     }
 
-});*/
+});
 
 
 
